@@ -1,7 +1,10 @@
 from fastapi import APIRouter
 from controller.models.request.create_short_code import CreateShortCodeRequest
+from service.short_code import ShortCodeService
 from .models.request.create_short_code import CreateShortCodeRequest
 from .models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
+
+service: ShortCodeService = ShortCodeService()
 
 
 class ShortCodeController:
@@ -23,6 +26,6 @@ class ShortCodeController:
             url="foobar", short_code="blah blah")
         return response.dict()
 
-    @router.post("", response_model=ShortCodeResponse)
+    @router.post("")
     async def create_short_code(request: CreateShortCodeRequest):
-        return "balh"
+        return service.create_short_code(request)
