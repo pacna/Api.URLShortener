@@ -14,6 +14,6 @@ class GotoController:
     def __init__(self) -> None:
         pass
 
-    @router.get("/{url}", response_model=GotoResponse)
-    async def get_goto_url(url: str):
-        return service.get_goto_url(url)
+    @router.get("/{code}", response_model=GotoResponse)
+    async def get_goto_url(code: str):
+        return service.get_goto_url(code)
