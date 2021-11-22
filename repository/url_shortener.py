@@ -2,7 +2,6 @@ from typing import List
 from pymodm.connection import connect
 from controller.models.request.search_short_codes import SearchShortCodesRequest
 from repository.documents.url_shortener import URLShortener, URLShortenerDocument
-from repository.models.url_shortener import URLShortenerModel
 from service.helpers.env import ENVHelper
 
 config: ENVHelper = ENVHelper()
@@ -12,11 +11,10 @@ connect(f"{config.get_mongo_uri()}/url_shortener")
 
 class URLShortenerRepository:
     def __init__(self) -> None:
-        self.mongo_counter = 0
+        self.mongo_cache_counter = 0
 
-    def add(self, model: URLShortenerModel) -> None:
-        URLShortenerDocument(
-            url=model.url, short_code=model.short_code, counter=model.counter).create_document()
+    def add(self, doc: URLShortenerDocument) -> None:
+        doc.create_document()
 
     def search(self, request: SearchShortCodesRequest) -> List[URLShortener]:
         try:
@@ -47,11 +45,11 @@ class URLShortenerRepository:
             return URLShortener()
 
     def get_counter(self) -> int:
-        if self.mongo_counter == 0:
-            self.mongo_counter = URLShortenerDocument().get_count()
-            return self.mongo_counter
+        if self.mongo_cache_counter == 0:
+            self.mongo_cache_counter = URLShortenerDocument().get_count()
+            return self.mongo_cache_counter
         else:
-            return self.mongo_counter
+            return self.mongo_cache_counter
 
     def set_counter(self) -> None:
-        self.mongo_counter += 1
+        self.mongo_cache_counter += 1

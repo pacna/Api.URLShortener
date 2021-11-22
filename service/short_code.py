@@ -4,8 +4,7 @@ from controller.models.request.create_short_code import CreateShortCodeRequest
 from controller.models.request.search_short_codes import SearchShortCodesRequest
 from controller.models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
 from controller.models.response.short_code_url import ShortCodeURLResponse
-from repository.documents.url_shortener import URLShortener
-from repository.models.url_shortener import URLShortenerModel
+from repository.documents.url_shortener import URLShortener, URLShortenerDocument
 from repository.url_shortener import URLShortenerRepository
 from validators import url
 from service.helpers.hash import HashHelper
@@ -25,9 +24,9 @@ class ShortCodeService(IShortCodeService):
         if (not validation.is_error):
             counter: int = repo.get_counter()
             hash: str = HashHelper(counter=counter).create_hash()
-            model: URLShortenerModel = URLShortenerModel(
+            doc: URLShortenerDocument = URLShortenerDocument(
                 url=request.url, short_code=hash, counter=counter)
-            repo.add(model)
+            repo.add(doc)
             repo.set_counter()
 
             tiny_url: str = self._create_tiny_url(hash)
