@@ -15,6 +15,7 @@ command-not-found==0.3
 cryptography==2.8
 cupshelpers==1.0
 dbus-python==1.2.16
+decorator==5.1.0
 defer==1.0.6
 distro==1.4.0
 distro-info===0.23ubuntu1
@@ -28,10 +29,12 @@ fastapi==0.70.0
 fasteners==0.14.1
 future==0.18.2
 h11==0.12.0
+hashids==1.3.1
 httplib2==0.14.0
 httptools==0.2.0
 idna==2.8
 importlib-metadata==1.5.0
+iniconfig==1.1.1
 jsonschema==3.2.0
 keyring==18.0.1
 language-selector==0.1
@@ -48,10 +51,14 @@ more-itertools==4.2.0
 netifaces==0.10.4
 oauthlib==3.1.0
 olefile==0.46
+packaging==21.3
 paramiko==2.6.0
+pbr==5.8.0
 pexpect==4.6.0
 Pillow==7.0.0
+pluggy==1.0.0
 protobuf==3.6.1
+py==1.11.0
 pycairo==1.16.2
 pycodestyle==2.8.0
 pycups==1.9.73
@@ -62,8 +69,10 @@ pymacaroons==0.13.0
 pymodm==0.4.3
 pymongo==3.12.1
 PyNaCl==1.3.0
+pyparsing==3.0.6
 pyRFC3339==1.1
 pyrsistent==0.15.5
+pytest==6.2.5
 python-apt==2.0.0+ubuntu0.20.4.6
 python-dateutil==2.7.3
 python-debian===0.1.36ubuntu1
@@ -80,6 +89,7 @@ six==1.14.0
 sniffio==1.2.0
 starlette==0.16.0
 systemd-python==234
+testresources==2.0.1
 texttable==1.6.2
 toml==0.10.2
 typing-extensions==3.10.0.2
@@ -91,6 +101,7 @@ urllib3==1.25.8
 usb-creator==0.3.7
 uvicorn==0.15.0
 uvloop==0.16.0
+validators==0.18.2
 wadllib==1.3.3
 watchgod==0.7
 websocket-client==0.53.0

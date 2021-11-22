@@ -3,14 +3,16 @@ from pymodm.connection import connect
 from controller.models.request.search_short_codes import SearchShortCodesRequest
 from repository.documents.url_shortener import URLShortener, URLShortenerDocument
 from repository.models.url_shortener import URLShortenerModel
+from service.helper.env import ENVHelper
 
-connect("mongodb://localhost:27017/url_shortener")
+config: ENVHelper = ENVHelper()
+
+connect(f"{config.get_mongo_uri()}/url_shortener")
 
 
 class URLShortenerRepo:
     def __init__(self) -> None:
         self.mongo_counter = 0
-        pass
 
     def add(self, model: URLShortenerModel) -> None:
         URLShortenerDocument(
@@ -33,6 +35,13 @@ class URLShortenerRepo:
     def get_by_short_code(self, short_code: str) -> URLShortener:
         try:
             return URLShortenerDocument().get_document_by_short_code(short_code)
+        except Exception as exception:
+            print(exception)
+            return URLShortener()
+
+    def get_by_url(self, url: str) -> URLShortener:
+        try:
+            return URLShortenerDocument().get_document_by_url(url)
         except Exception as exception:
             print(exception)
             return URLShortener()

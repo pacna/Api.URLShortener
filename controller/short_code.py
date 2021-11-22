@@ -1,7 +1,8 @@
 from typing import Optional
-from fastapi import APIRouter, status, Response
+from fastapi import APIRouter
 from controller.models.request.create_short_code import CreateShortCodeRequest
 from controller.models.request.search_short_codes import SearchShortCodesRequest
+from controller.models.response.short_code_url import ShortCodeURLResponse
 from service.short_code import ShortCodeService
 from .models.request.create_short_code import CreateShortCodeRequest
 from .models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
@@ -27,8 +28,7 @@ class ShortCodeController:
     async def get_short_code(id: str):
         return service.get_short_code_by_id(id)
 
-    @router.post("", status_code=status.HTTP_201_CREATED)
-    async def create_short_code(request: CreateShortCodeRequest, response: Response):
-        service.create_short_code(request)
-        response.status_code = status.HTTP_201_CREATED
+    @router.post("", response_model=ShortCodeURLResponse)
+    async def create_short_code(request: CreateShortCodeRequest):
+        response: ShortCodeURLResponse = service.create_short_code(request)
         return response

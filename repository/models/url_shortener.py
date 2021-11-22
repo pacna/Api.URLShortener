@@ -3,4 +3,3 @@ class URLShortenerModel:
         self.url = url
         self.short_code = short_code
         self.counter = counter
-        pass
