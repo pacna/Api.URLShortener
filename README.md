@@ -1,6 +1,6 @@
 # API URLShortener
 
-A simple URL Shortener service
+A simple URL Shortener service.
 
 ```bash
 # POST request to API
@@ -17,7 +17,7 @@ $ {"url":"http://localhost:8000/goto/8w"}
 2.  [mongoDB](https://www.mongodb.com/try/download/community)
 
 ## Setup Env
-Create a `.env` file in the main directory and create a `HOST` and `MONGURI` variable
+Create a `.env` file in the root directory and then add `HOST` and `MONGURI` variables in the `.env`
 
 ### Local development setup
 ```bash
@@ -25,7 +25,7 @@ Create a `.env` file in the main directory and create a `HOST` and `MONGURI` var
 HOST = localhost
 MONGO_URI = mongodb://localhost:27017
 ```
-**Note** : swap out local values with production values when ready to release to production
+**Note** : Swap out local values with production values when ready to release to production.
 
 ## How to install dependencies
 ```bash
