@@ -29,6 +29,11 @@ $ pip install -r requirements.txt
 $ uvicorn main:app --reload
 ```
 
+## How to run in production mode
+```bash
+$ gunicorn main:app --worker-class uvicorn.workers.UvicornWorker
+```
+
 ## How to run tests
 ```bash
 $ pytest

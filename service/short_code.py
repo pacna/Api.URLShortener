@@ -6,18 +6,19 @@ from controller.models.response.short_code import ShortCodeCollectionResponse, S
 from controller.models.response.short_code_url import ShortCodeURLResponse
 from repository.documents.url_shortener import URLShortener
 from repository.models.url_shortener import URLShortenerModel
-from repository.url_shortener import URLShortenerRepo
+from repository.url_shortener import URLShortenerRepository
 from validators import url
-from service.helper.hash import HashHelper
-from service.helper.env import ENVHelper
+from service.helpers.hash import HashHelper
+from service.helpers.env import ENVHelper
+from service.ishort_code import IShortCodeService
 from service.models.validation import ValidationModel
 
-repo: URLShortenerRepo = URLShortenerRepo()
+repo: URLShortenerRepository = URLShortenerRepository()
 
 
-class ShortCodeService:
+class ShortCodeService(IShortCodeService):
     def __init__(self) -> None:
-        pass
+        super().__init__()
 
     def create_short_code(self, request: CreateShortCodeRequest) -> ShortCodeURLResponse:
         validation: ValidationModel = self._check_validation(request.url)

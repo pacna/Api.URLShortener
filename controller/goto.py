@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 from controller.models.response.goto import GotoResponse
 from service.goto import GotoService
+from service.igoto import IGotoService
 
-service: GotoService = GotoService()
+service: IGotoService = GotoService()
 
 
 class GotoController:

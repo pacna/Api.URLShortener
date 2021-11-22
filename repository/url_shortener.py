@@ -3,14 +3,14 @@ from pymodm.connection import connect
 from controller.models.request.search_short_codes import SearchShortCodesRequest
 from repository.documents.url_shortener import URLShortener, URLShortenerDocument
 from repository.models.url_shortener import URLShortenerModel
-from service.helper.env import ENVHelper
+from service.helpers.env import ENVHelper
 
 config: ENVHelper = ENVHelper()
 
 connect(f"{config.get_mongo_uri()}/url_shortener")
 
 
-class URLShortenerRepo:
+class URLShortenerRepository:
     def __init__(self) -> None:
         self.mongo_counter = 0
 
