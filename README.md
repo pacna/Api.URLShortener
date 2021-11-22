@@ -24,7 +24,7 @@ MONGO_URI = mongodb://localhost:27017
 $ pip install -r requirements.txt
 ```
 
-## How to run locally
+## How to run in local mode
 ```bash
 $ uvicorn main:app --reload
 ```
