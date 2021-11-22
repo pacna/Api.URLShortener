@@ -2,6 +2,14 @@
 
 A simple URL Shortener service
 
+```bash
+# POST request to API
+$ curl --header "Content-Type: application/json" --request POST --data '{"url": "https://www.google.com"}' http://localhost:8000/short-code
+
+# response
+$ {"url":"http://localhost:8000/goto/8w"}
+```
+
 ## Prerequisites
 
 1.  [python 3.8 or higher](https://www.python.org/downloads/)
