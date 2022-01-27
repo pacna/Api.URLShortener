@@ -5,8 +5,8 @@ from starlette.responses import Response
 from controller.models.request.create_short_code import CreateShortCodeRequest
 from main import app
 from controller import short_code, goto
-from tests.goto import TestGotoService
-from tests.short_code import TestShortService
+from mocks.goto import TestGotoService
+from mocks.short_code import TestShortService
 
 
 short_code.service = TestShortService()
