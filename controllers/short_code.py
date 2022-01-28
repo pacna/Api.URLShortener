@@ -11,7 +11,7 @@ from .models.response.short_code import ShortCodeCollectionResponse, ShortCodeRe
 service: IShortCodeService = ShortCodeService()
 
 
-class ShortCodecontrollers:
+class ShortCodeController:
     router: APIRouter = APIRouter(
         tags=["Short Code"],
         prefix="/short-code"

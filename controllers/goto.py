@@ -6,7 +6,7 @@ from services.igoto import IGotoService
 service: IGotoService = GotoService()
 
 
-class Gotocontrollers:
+class GotoController:
     router: APIRouter = APIRouter(
         tags=["Goto"],
         prefix="/goto"
