@@ -1,4 +1,4 @@
-from controller.models.base_config_model import BaseConfigModel
+from controllers.models.base_config_model import BaseConfigModel
 from pydantic.fields import Field
 
 

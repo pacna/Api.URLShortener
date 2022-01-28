@@ -2,9 +2,9 @@ from typing import Dict
 from fastapi import status
 from fastapi.testclient import TestClient
 from starlette.responses import Response
-from controller.models.request.create_short_code import CreateShortCodeRequest
+from controllers.models.request.create_short_code import CreateShortCodeRequest
 from main import app
-from controller import short_code, goto
+from controllers import short_code, goto
 from mocks.goto import TestGotoService
 from mocks.short_code import TestShortService
 

@@ -1,5 +1,5 @@
-from controller.models.response.goto import GotoResponse
-from service.igoto import IGotoService
+from controllers.models.response.goto import GotoResponse
+from services.igoto import IGotoService
 
 
 class TestGotoService(IGotoService):

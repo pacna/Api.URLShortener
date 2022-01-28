@@ -1,16 +1,16 @@
 from typing import List
 from fastapi import HTTPException, status
-from controller.models.request.create_short_code import CreateShortCodeRequest
-from controller.models.request.search_short_codes import SearchShortCodesRequest
-from controller.models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
-from controller.models.response.short_code_url import ShortCodeURLResponse
-from repository.documents.url_shortener import URLShortener, URLShortenerDocument
-from repository.url_shortener import URLShortenerRepository
+from controllers.models.request.create_short_code import CreateShortCodeRequest
+from controllers.models.request.search_short_codes import SearchShortCodesRequest
+from controllers.models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
+from controllers.models.response.short_code_url import ShortCodeURLResponse
+from repositories.documents.url_shortener import URLShortener, URLShortenerDocument
+from repositories.url_shortener import URLShortenerRepository
 from validators import url
-from service.helpers.hash import HashHelper
-from service.helpers.env import ENVHelper
-from service.ishort_code import IShortCodeService
-from service.models.validation import ValidationModel
+from services.helpers.hash import HashHelper
+from services.helpers.env import ENVHelper
+from services.ishort_code import IShortCodeService
+from services.models.validation import ValidationModel
 
 repo: URLShortenerRepository = URLShortenerRepository()
 

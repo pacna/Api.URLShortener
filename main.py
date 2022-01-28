@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.openapi.utils import get_openapi
-from controller.short_code import ShortCodeController
-from controller.goto import GotoController
+from controllers.short_code import ShortCodecontrollers
+from controllers.goto import Gotocontrollers
 
 app: FastAPI = FastAPI()
-app.include_router(ShortCodeController().router)
-app.include_router(GotoController().router)
+app.include_router(ShortCodecontrollers().router)
+app.include_router(Gotocontrollers().router)
 
 
 @app.get("/", include_in_schema=False)

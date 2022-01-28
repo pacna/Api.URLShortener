@@ -33,7 +33,7 @@ MONGO_URI = mongodb://localhost:27017
 ## How to install dependencies
 
 ```bash
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## How to run in local mode

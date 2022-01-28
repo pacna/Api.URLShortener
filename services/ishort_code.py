@@ -1,19 +1,15 @@
-from typing import List
 from controllers.models.request.create_short_code import CreateShortCodeRequest
 from controllers.models.request.search_short_codes import SearchShortCodesRequest
 from controllers.models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
 from controllers.models.response.short_code_url import ShortCodeURLResponse
-from services.short_code import IShortCodeService
 
 
-class TestShortService(IShortCodeService):
+class IShortCodeService:
     def get_short_code_by_id(self, id: str) -> ShortCodeResponse:
-        return ShortCodeResponse(url='http://www.google.com', short_code="ww", id=id)
+        pass
 
     def search_short_codes(self, request: SearchShortCodesRequest) -> ShortCodeCollectionResponse:
-        mock_list: List[ShortCodeResponse] = [ShortCodeResponse(
-            url=request.url, short_code=request.code, id='test1')]
-        return ShortCodeCollectionResponse(list=mock_list, count=1)
+        pass
 
     def create_short_code(self, request: CreateShortCodeRequest) -> ShortCodeURLResponse:
-        return ShortCodeURLResponse(url="http://www.pacna.com/goto/blah")
+        pass

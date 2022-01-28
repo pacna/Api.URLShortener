@@ -1,7 +1,7 @@
-from controller.models.response.goto import GotoResponse
-from repository.documents.url_shortener import URLShortener
-from repository.url_shortener import URLShortenerRepository
-from service.igoto import IGotoService
+from controllers.models.response.goto import GotoResponse
+from repositories.documents.url_shortener import URLShortener
+from repositories.url_shortener import URLShortenerRepository
+from services.igoto import IGotoService
 
 
 repo: URLShortenerRepository = URLShortenerRepository()

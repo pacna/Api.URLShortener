@@ -1,6 +1,6 @@
 from typing import List
 from pydantic.fields import Field
-from controller.models.base_config_model import BaseConfigModel
+from controllers.models.base_config_model import BaseConfigModel
 
 
 class ShortCodeResponse(BaseConfigModel):

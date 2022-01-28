@@ -1,4 +1,4 @@
-from controller.models.response.goto import GotoResponse
+from controllers.models.response.goto import GotoResponse
 
 
 class IGotoService:

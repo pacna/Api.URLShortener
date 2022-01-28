@@ -1,12 +1,12 @@
 from fastapi import APIRouter
-from controller.models.response.goto import GotoResponse
-from service.goto import GotoService
-from service.igoto import IGotoService
+from controllers.models.response.goto import GotoResponse
+from services.goto import GotoService
+from services.igoto import IGotoService
 
 service: IGotoService = GotoService()
 
 
-class GotoController:
+class Gotocontrollers:
     router: APIRouter = APIRouter(
         tags=["Goto"],
         prefix="/goto"

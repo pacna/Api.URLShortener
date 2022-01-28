@@ -1,17 +1,17 @@
 from typing import Optional
 from fastapi import APIRouter
-from controller.models.request.create_short_code import CreateShortCodeRequest
-from controller.models.request.search_short_codes import SearchShortCodesRequest
-from controller.models.response.short_code_url import ShortCodeURLResponse
-from service.ishort_code import IShortCodeService
-from service.short_code import ShortCodeService
+from controllers.models.request.create_short_code import CreateShortCodeRequest
+from controllers.models.request.search_short_codes import SearchShortCodesRequest
+from controllers.models.response.short_code_url import ShortCodeURLResponse
+from services.ishort_code import IShortCodeService
+from services.short_code import ShortCodeService
 from .models.request.create_short_code import CreateShortCodeRequest
 from .models.response.short_code import ShortCodeCollectionResponse, ShortCodeResponse
 
 service: IShortCodeService = ShortCodeService()
 
 
-class ShortCodeController:
+class ShortCodecontrollers:
     router: APIRouter = APIRouter(
         tags=["Short Code"],
         prefix="/short-code"

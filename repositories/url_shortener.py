@@ -1,8 +1,8 @@
 from typing import List
 from pymodm.connection import connect
-from controller.models.request.search_short_codes import SearchShortCodesRequest
-from repository.documents.url_shortener import URLShortener, URLShortenerDocument
-from service.helpers.env import ENVHelper
+from controllers.models.request.search_short_codes import SearchShortCodesRequest
+from repositories.documents.url_shortener import URLShortener, URLShortenerDocument
+from services.helpers.env import ENVHelper
 
 config: ENVHelper = ENVHelper()
 
