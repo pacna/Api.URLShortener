@@ -6,7 +6,10 @@ from services.helpers.env import ENVHelper
 
 config: ENVHelper = ENVHelper()
 
-connect(f"{config.get_mongo_uri()}/url_shortener")
+try:
+    connect(f"{config.get_mongo_uri()}/url_shortener")
+except Exception as exception:
+    print(f"Unable to connect to mongo -- {exception}")
 
 
 class URLShortenerRepository:
