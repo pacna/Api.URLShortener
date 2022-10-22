@@ -1,5 +1,7 @@
 # API URLShortener
 
+<img alt="Test passing" src="https://github.com/pacna/Api.URLShortener/workflows/Test/badge.svg" />
+
 A simple URL Shortener service.
 
 ```bash
@@ -10,7 +12,7 @@ $ curl --header "Content-Type: application/json" --request POST --data '{"url": 
 $ {"url":"http://localhost:8000/goto/8w"}
 ```
 
-## Prerequisites
+## Ubuntu Prerequisites
 
 1.  [python 3.8 or higher](https://www.python.org/downloads/)
 
@@ -34,6 +36,20 @@ MONGO_URI = mongodb://localhost:27017
 
 ```bash
 $ pip install -r requirements.txt
+```
+
+### Troubleshoot
+
+If you experience this error
+
+```bash
+$ /usr/bin/python3: No module named pip
+```
+
+Install the following
+
+```bash
+$ apt install python3-pip
 ```
 
 ## How to run in local mode
