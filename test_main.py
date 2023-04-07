@@ -1,4 +1,3 @@
-from typing import Dict
 from fastapi import status
 from fastapi.testclient import TestClient
 from starlette.responses import Response
@@ -24,9 +23,9 @@ def test_get_root() -> None:
 
 def test_get_short_code_by_id() -> None:
     # ARRANGE
-    id: str = 'testid'
-    expected_response: Dict[str, str] = {
-        'url': 'http://www.google.com', 'shortCode': 'ww', 'id': 'testid'}
+    id: str = 'ww'
+    expected_response: dict[str, str] = {
+        'url': 'http://www.google.com', 'id': id}
 
     # ACT
     response: Response = test_client.get(f"/short-code/{id}")
@@ -39,8 +38,8 @@ def test_get_short_code_by_id() -> None:
 def test_search_short_code_by_url() -> None:
     # ARRANGE
     url: str = 'http://www.google.com'
-    expected_response: Dict[str, str] = {'list': [
-        {'url': 'http://www.google.com', 'shortCode': None, 'id': 'test1'}], 'count': 1}
+    expected_response: dict[str, str] = {'list': [
+        {'url': url, 'id': None}], 'count': 1}
 
     # ACT
     response: Response = test_client.get(f"/short-code?url={url}")
@@ -53,8 +52,8 @@ def test_search_short_code_by_url() -> None:
 def test_search_short_code_by_code() -> None:
     # ARRANGE
     code: str = 'foo'
-    expected_response: Dict[str, str] = {'list': [
-        {'url': None, 'shortCode': 'foo', 'id': 'test1'}], 'count': 1}
+    expected_response: dict[str, str] = {'list': [
+        {'url': None, 'id': code}], 'count': 1}
 
     # ACT
     response: Response = test_client.get(f"/short-code?code={code}")
@@ -69,7 +68,7 @@ def test_create_short_code() -> None:
     request: CreateShortCodeRequest = CreateShortCodeRequest(
         url='http:www.google.com')
 
-    expected_response: Dict[str, str] = {
+    expected_response: dict[str, str] = {
         'url': 'http://www.pacna.com/goto/blah'}
 
     # ACT
@@ -83,7 +82,7 @@ def test_create_short_code() -> None:
 def test_get_goto_url() -> None:
     # ARRANGE
     short_code: str = '9x'
-    expected_response: Dict[str, str] = {
+    expected_response: dict[str, str] = {
         'url': 'http://www.google.com'
     }
 

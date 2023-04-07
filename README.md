@@ -2,70 +2,77 @@
 
 <img alt="Test passing" src="https://github.com/pacna/Api.URLShortener/workflows/Test/badge.svg" />
 
-A simple URL Shortener service.
+API URLShortener is a Python-based service that provides a simple way to shorten long URLs, making them easier to share and remember.
+
+## Example
+
+To shorten a URL, send a POST request to the API with the URL as the payload:
 
 ```bash
-# POST request to API
 $ curl --header "Content-Type: application/json" --request POST --data '{"url": "https://www.google.com"}' http://localhost:8000/short-code
+```
 
-# response
+You should receive a response containing the shortened URL:
+
+```bash
 $ {"url":"http://localhost:8000/goto/8w"}
 ```
 
 ## Ubuntu Prerequisites
 
-1.  [python 3.8 or higher](https://www.python.org/downloads/)
+Before running the API URLShortener, make sure you have the following dependencies installed on your system:
 
-2.  [mongoDB](https://www.mongodb.com/try/download/community)
+1.  [Python](https://www.python.org/downloads/) (python 3.10)
 
-## Setup Env
+2.  [MongoDB](https://www.mongodb.com/try/download/community)
 
-Create a `.env` file in the root directory and then add `HOST` and `MONGURI` variables in the `.env`
+3.  [Make](https://www.gnu.org/software/make/)
+
+## Configuration
+
+Create a `.env` file in the root directory and add the `HOST` and `MONGO_URI` variables:
 
 ### Local development setup
 
 ```bash
-# .env
 HOST = localhost
 MONGO_URI = mongodb://localhost:27017
 ```
 
-**Note** : Swap out local values with production values when ready to release to production.
+**Note** : Replace these values with production values when deploying to production.
 
-## How to install dependencies
+## Installation
 
-```bash
-$ pip install -r requirements.txt
-```
-
-### Troubleshoot
-
-If you experience this error
+To install the required dependencies, run:
 
 ```bash
-$ /usr/bin/python3: No module named pip
+$ make install
 ```
 
-Install the following
+If you encounter the error `/usr/bin/python3: No module named pip`, install `python3-pip`:
 
 ```bash
 $ apt install python3-pip
 ```
 
-## How to run in local mode
+## Running the Service
+
+To run the service locally, use:
 
 ```bash
-$ uvicorn main:app --reload
+$ make local
 ```
 
-## How to run in production mode
+To run the service in production mode, use:
 
 ```bash
-$ gunicorn main:app --worker-class uvicorn.workers.UvicornWorker
+$ make run
 ```
 
-## How to run tests
+## Running Tests
+
+To run tests, use:
 
 ```bash
-$ pytest
+$ make test
 ```

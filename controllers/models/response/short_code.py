@@ -5,7 +5,6 @@ from controllers.models.base_config_model import BaseConfigModel
 
 class ShortCodeResponse(BaseConfigModel):
     url: str = Field(None, alias='url')
-    short_code: str = Field(None, alias='shortCode')
     id: str = Field(None, alias='id')
 
 

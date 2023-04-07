@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.openapi.utils import get_openapi
-from controllers.short_code import ShortCodeController
-from controllers.goto import GotoController
+from controllers import short_code, goto
 
 app: FastAPI = FastAPI()
-app.include_router(ShortCodeController().router)
-app.include_router(GotoController().router)
+app.include_router(short_code.router)
+app.include_router(goto.router)
 
 
 @app.get("/", include_in_schema=False)
@@ -20,7 +19,7 @@ def custom_openapi():
     openapi_schema = get_openapi(
         title="API.URLShortener",
         version="0.0.1",
-        description="A URL shortener service",
+        description="A Python-based service that provides a simple way to shorten long URLs, making them easier to share and remember.",
         routes=app.routes,
     )
     app.openapi_schema = openapi_schema

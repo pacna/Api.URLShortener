@@ -33,13 +33,6 @@ class URLShortenerRepository:
             print(exception)
             return URLShortener()
 
-    def get_by_short_code(self, short_code: str) -> URLShortener:
-        try:
-            return URLShortenerDocument().get_document_by_short_code(short_code)
-        except Exception as exception:
-            print(exception)
-            return URLShortener()
-
     def get_by_url(self, url: str) -> URLShortener:
         try:
             return URLShortenerDocument().get_document_by_url(url)

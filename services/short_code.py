@@ -9,15 +9,14 @@ from repositories.url_shortener import URLShortenerRepository
 from validators import url
 from services.helpers.hash import HashHelper
 from services.helpers.env import ENVHelper
-from services.ishort_code import IShortCodeService
 from services.models.validation import ValidationModel
 
 repo: URLShortenerRepository = URLShortenerRepository()
 
 
-class ShortCodeService(IShortCodeService):
+class ShortCodeService():
     def __init__(self) -> None:
-        super().__init__()
+        pass
 
     def create_short_code(self, request: CreateShortCodeRequest) -> ShortCodeURLResponse:
         validation: ValidationModel = self._check_validation(request.url)
@@ -45,7 +44,7 @@ class ShortCodeService(IShortCodeService):
     def get_short_code_by_id(self, id: str) -> ShortCodeResponse:
         document: URLShortener = repo.get_by_id(id)
         response: ShortCodeResponse = ShortCodeResponse(
-            url=document.url, short_code=document.short_code, id=str(document._id))
+            url=document.url, id=document._id)
         return response.dict()
 
     # private and protected methods
@@ -55,7 +54,7 @@ class ShortCodeService(IShortCodeService):
 
         for doc in documents:
             response: ShortCodeResponse = ShortCodeResponse(
-                url=doc['url'], short_code=doc['sc'], id=str(doc['_id']))
+                url=doc['url'], id=doc['_id'])
             response_list.append(response)
 
         response: ShortCodeCollectionResponse = ShortCodeCollectionResponse(

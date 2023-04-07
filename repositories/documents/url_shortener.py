@@ -1,12 +1,11 @@
 import datetime
 from typing import List
 from pymodm import fields, MongoModel
-from bson.objectid import ObjectId
 from pymongo import DESCENDING
 
 
 class URLShortener(MongoModel):
-    short_code: fields.CharField = fields.CharField(mongo_name="sc")
+    _id: fields.MongoBaseField = fields.MongoBaseField(primary_key=True)
     url: fields.CharField = fields.CharField(mongo_name="url")
     create_date: fields.DateTimeField = fields.DateTimeField(
         mongo_name="cd")
@@ -22,17 +21,14 @@ class URLShortenerDocument():
 
     def create_document(self) -> None:
         document: URLShortener = URLShortener(
-            self.short_code, self.url, datetime.datetime.now(), self.counter)
+            _id=self.short_code, url=self.url, create_date=datetime.datetime.now(), counter=self.counter)
         document.save()
 
     def get_document_by_id(self, id: str) -> URLShortener:
-        return URLShortener.objects.get({'_id': ObjectId(id)})
+        return URLShortener.objects.get({'_id': id})
 
     def get_document_by_url(self, url: str) -> URLShortener:
         return URLShortener.objects.get({'url': url})
-
-    def get_document_by_short_code(self, short_code: str) -> URLShortener:
-        return URLShortener.objects.get({'sc': short_code})
 
     def search_documents(self, url: str, short_code: str) -> List[URLShortener]:
         filter: dict = self._build_filter(url, short_code)
@@ -50,6 +46,6 @@ class URLShortenerDocument():
         if url != None:
             filter['url'] = url
         if short_code != None:
-            filter['sc'] = short_code
+            filter['_id'] = short_code
 
         return filter
