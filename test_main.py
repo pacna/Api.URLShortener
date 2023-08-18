@@ -72,7 +72,7 @@ def test_create_short_code() -> None:
         'url': 'http://www.pacna.com/goto/blah'}
 
     # ACT
-    response: Response = test_client.post('/short-code', json=request.dict())
+    response: Response = test_client.post('/short-code', json=request.model_dump())
 
     # ASSERT
     assert response.status_code == status.HTTP_200_OK

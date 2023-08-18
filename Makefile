@@ -6,12 +6,12 @@
 python = env/bin/python
 
 .PHONY:run
-run: ## run the app in production mode
+run: ## run the app
 ##
-	${python} -m gunicorn main:app --worker-class uvicorn.workers.UvicornWorker
+	$(python) main.py
 
-.PHONY:local
-local: ## run the app for local development
+.PHONY:watch
+watch: ## run the app in watch mode
 ##
 	${python} -m uvicorn main:app --reload
 

@@ -57,16 +57,18 @@ $ apt install python3-pip
 
 ## Running the Service
 
-To run the service locally, use:
+You can start the service using the following commands:
 
-```bash
-$ make local
-```
-
-To run the service in production mode, use:
+For local or production mode:
 
 ```bash
 $ make run
+```
+
+For watch mode:
+
+```bash
+$ make watch
 ```
 
 ## Running Tests

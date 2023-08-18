@@ -4,8 +4,8 @@ from controllers.models.base_config_model import BaseConfigModel
 
 
 class ShortCodeResponse(BaseConfigModel):
-    url: str = Field(None, alias='url')
-    id: str = Field(None, alias='id')
+    url: str | None = Field(None, alias='url')
+    id: str | None = Field(None, alias='id')
 
 
 class ShortCodeCollectionResponse(BaseConfigModel):

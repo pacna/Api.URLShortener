@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.openapi.utils import get_openapi
+from uvicorn import Config, Server
 from controllers import short_code, goto
 
 app: FastAPI = FastAPI()
@@ -27,3 +28,7 @@ def custom_openapi():
 
 
 app.openapi = custom_openapi
+
+if __name__ == "__main__":
+    server = Server(Config("main:app", port=8000, log_level="info"))
+    server.run()
